@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
-
 import {MdCardModule} from '@angular/material';
+
 import {MdListModule} from '@angular/material';
 @Component({
   selector: 'app-posts',

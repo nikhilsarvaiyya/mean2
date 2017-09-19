@@ -21,7 +21,8 @@ import { PostsService } from './posts.service';
 const ROUTES = [
   {
     path: '',
-    redirectTo: 'posts',
+    //redirectTo: 'posts',
+    component: PostsComponent,
     pathMatch: 'full'
   },
   {
