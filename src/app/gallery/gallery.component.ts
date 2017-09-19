@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '../posts.service';
+
+import { ServicesService } from '../services/services.service';
 import {MdCardModule} from '@angular/material';
 
 @Component({
@@ -12,11 +13,11 @@ export class GalleryComponent implements OnInit {
   // instantiate posts to an empty array
   galleryList: any = [];
 
-  constructor(private postsService: PostsService) { }
+  constructor(private mainService: ServicesService) { }
 
   ngOnInit() {
     // Retrieve posts from the API
-    this.postsService.getAllPosts().subscribe(galleryList => {
+    this.mainService.getAllPosts().subscribe(galleryList => {
       this.galleryList = galleryList;
     });
   }

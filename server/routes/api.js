@@ -1,9 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
+/*const mongoose = require('mongoose');
+var db = mongoose.createConnection('localhost', 'test');
+
+var schema = mongoose.Schema({ name: 'string' });
+var Cat = db.model('Cat', schema);
+
+var kitty = new Cat({ name: 'Zildjian' });
+kitty.save(function (err) {
+  if (err) // ...
+  console.log('meow');
+});*/
+
 // declare axios for making http requests
 const axios = require('axios');
 const API = 'https://jsonplaceholder.typicode.com';
+
+
 
 /* GET api listing. */
 router.get('/', (req, res) => {
