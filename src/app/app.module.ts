@@ -12,29 +12,29 @@ import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/posts.component';
 
 // Imports Post Services
 import { PostsService } from './posts.service';
+import { GalleryComponent } from './gallery/gallery.component';
 
 // Define the routes
 const ROUTES = [
   {
     path: '',
-    //redirectTo: 'posts',
-    component: PostsComponent,
-    pathMatch: 'full'
+    //redirectTo: 'gallery',
+    component: GalleryComponent,
+    //pathMatch: 'full'
   },
   {
-    path: 'posts',
-    component: PostsComponent
+    //path: 'gallery',
+    //component: GalleryComponent
   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
