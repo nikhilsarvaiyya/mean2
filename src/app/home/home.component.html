@@ -1,3 +1,30 @@
-<p>
-  Home Page 
-</p>
+
+<md-card>
+	<md-card-title>Add User</md-card-title>
+	<md-card-content>
+		<form>
+			<md-list>
+				<md-list-item>
+
+					<md-form-field class="example-full-width">
+						<input mdInput [(ngModel)]="userObj.firstName" name="firstName" placeholder="First Name">
+					</md-form-field>
+				</md-list-item>
+				<md-list-item>
+
+					<md-form-field class="example-full-width">
+						<input mdInput [(ngModel)]="userObj.lastName" name="lastName" placeholder="Last Name">
+					</md-form-field>
+				</md-list-item>
+				<md-list-item>
+					<button md-raised-button (click)="saveUser(userObj)">Submit</button>
+				</md-list-item>
+			</md-list>
+			
+		</form>
+	</md-card-content>
+	
+</md-card>
+
+
+
