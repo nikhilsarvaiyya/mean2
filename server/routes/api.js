@@ -3,7 +3,8 @@ const router = express.Router();
 const axios = require('axios'); // declare axios for making http requests
 
 //Models
-const usersModel = require('../models/model.js')
+
+const userCtrl = require('../controller/userController.js')
 
 var mongoose = require('mongoose'); //Import the mongoose module
 var mongoDB = 'mongodb://127.0.0.1/mean2'; //Set up default mongoose connection
@@ -20,32 +21,16 @@ router.get('/', (req, res) => {
 
 /*Get Laa user List*/
 router.get('/getAllUser', (req, res) => {
-  usersModel.find({}, function(err, data){
-    if(err){
-      res.status(500).send(error)
-    }
-    else
-    {
-      res.status(200).json(data);
-    }
-
+  userCtrl.getUsers(function(err, data){
+    console.log(data);
   })
+
 });
 
 // Add User
 router.post('/addUser', (req, res) => {
-  console.log(req.body);
-
-  var user = new usersModel(req.body);
-  user.save(function(err,resource){
-    if(err){
-      res.send(err).status(501);
-    }
-    else
-    {
-      console.log(resource);
-      res.json(resource).status(201);
-    }
+  userCtrl.postUsers(req.body,function(err, data){
+    console.log(data);
   })
 });
 

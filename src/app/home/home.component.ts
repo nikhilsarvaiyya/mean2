@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
 	}
 
 	saveUser(personDetail){
-
 		this.service.addUser(personDetail)
 		.subscribe(data => {
 			console.log("success Data", data);
@@ -36,6 +35,10 @@ export class HomeComponent implements OnInit {
 		this.service.getAllUser().subscribe(userList => {
 			console.log(userList)
 		});
+	}
+
+	uploadImage(){
+		console.log("Image Uploaded")
 	}
 
 }
