@@ -5,6 +5,7 @@ const axios = require('axios'); // declare axios for making http requests
 //Models
 
 const userCtrl = require('../controller/userController.js')
+const imgCtrl = require('../controller/uploadImageController.js')
 
 var mongoose = require('mongoose'); //Import the mongoose module
 var mongoDB = 'mongodb://127.0.0.1/mean2'; //Set up default mongoose connection
@@ -30,9 +31,16 @@ router.get('/getAllUser', (req, res) => {
 // Add User
 router.post('/addUser', (req, res) => {
   userCtrl.postUsers(req.body,function(err, data){
-    console.log(data);
+    //console.log(data);
+  })
+});
+
+router.post('/photo',function(req,res){
+    imgCtrl.uploadFile(req, res, function(err, data){
+    //console.log(data);
   })
 });
 
 
 module.exports = router;
+
