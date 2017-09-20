@@ -12,14 +12,11 @@ import {MdCardModule} from '@angular/material';
 export class GalleryComponent implements OnInit {
   // instantiate posts to an empty array
   galleryList: any = [];
-
+ gallery = "Gallery Page"
   constructor(private mainService: ServicesService) { }
 
   ngOnInit() {
-    // Retrieve posts from the API
-    this.mainService.getAllPosts().subscribe(galleryList => {
-      this.galleryList = galleryList;
-    });
+    
   }
 }
 

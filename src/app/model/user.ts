@@ -1,9 +1,10 @@
-export class Person {
+/*var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var PersonSchema = new Schema({
+	fname : String,
+	lname : String
+});
 
-  constructor(
-    public firstName: string,
-    public lastName: string,
-    
-  ) {  }
+var Model = mongoose.model('Person', PersonSchema);
 
-}
+module.exports = Model;*/
