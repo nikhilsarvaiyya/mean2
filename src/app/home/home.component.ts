@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
 	@ViewChild('fileInput') fileInput;
 	userObj = {}
 	imgObj={}
+	imgBaseObj : any;
+	imagebase64: any;
 	constructor(public http: Http, private service : ServicesService) { }
 
 	ngOnInit() {
@@ -44,8 +46,11 @@ export class HomeComponent implements OnInit {
 		if (fileBrowser.files && fileBrowser.files[0]) {
 			const formData = new FormData();
 			formData.append("image", fileBrowser.files[0].name);
+
+
 			let imgObj = {
 				"imageName" : fileBrowser.files[0].name,
+				"imagebase64" : this.imagebase64,
 				"size" : fileBrowser.files[0].size,
 				"type" : fileBrowser.files[0].type,
 				"lastModified" : fileBrowser.files[0].lastModifiedDate,
@@ -57,6 +62,24 @@ export class HomeComponent implements OnInit {
 				
 			})
 		}
+	}
+
+	changeListener($event) : void {
+		this.readThis($event.target);
+	}
+
+	readThis(inputValue: any): void {
+		var file:File = inputValue.files[0];
+		var myReader:FileReader = new FileReader();
+
+		myReader.onloadend = (e) => {
+			console.log(e.target);
+			//this.imagebase64 = e.target;
+			//console.log(this.imagebase64);
+			this.imagebase64 = myReader.result;
+			console.log(this.imagebase64);
+		}
+		myReader.readAsDataURL(file);
 	}
 
 

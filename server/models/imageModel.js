@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ImageSchema = new Schema({
 	imageName : String,
+	imagebase64 : String,
 	size : String,	
 	type : String,	
 	lastModified : String,
