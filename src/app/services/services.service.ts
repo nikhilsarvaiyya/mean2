@@ -10,7 +10,7 @@ export class ServicesService {
 	addUser(person){
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return this.http.post("/api/addUser", JSON.stringify(person),{headers: headers})
+		return this.http.post("/api/addUser", person ,{headers: headers})
 		.map(response => response.json())
 		
 	}
@@ -20,7 +20,12 @@ export class ServicesService {
 		.map(res => res.json());
 	}
 
-
+	addImage(imgObj){
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		return this.http.post('/api/uploadImage', imgObj, {headers: headers})
+		.map(response => response.json())
+	}
 
 
 

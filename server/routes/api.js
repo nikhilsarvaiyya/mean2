@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 /*Get Laa user List*/
 router.get('/getAllUser', (req, res) => {
   userCtrl.getUsers(function(err, data){
-    console.log(data);
+    //console.log(data);
   })
 
 });
@@ -39,6 +39,15 @@ router.post('/photo',function(req,res){
     imgCtrl.uploadFile(req, res, function(err, data){
     //console.log(data);
   })
+});
+
+router.post('/uploadImage',function(req,res){
+  console.log("inside upload image");
+  console.log(req.body);
+    imgCtrl.addImage(req.body, function(err, data){
+    console.log(data);
+
+    })
 });
 
 

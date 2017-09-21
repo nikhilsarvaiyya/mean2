@@ -1,6 +1,6 @@
 'use strict'
-
-const multer  =   require('multer');
+const imageModel = require('../models/imageModel')
+/*const multer  =   require('multer');
 const path = require('path');
 
 var storage =   multer.diskStorage({
@@ -11,12 +11,12 @@ var storage =   multer.diskStorage({
     callback(null, file.fieldname + '-' + Date.now()+''+path.extname(file.originalname));
   }
 });
-var upload = multer({ storage : storage}).single('userPhoto');
+var upload = multer({ storage : storage}).single('userPhoto');*/
 
 
 module.exports= {
 
-uploadFile :function(req,res, cb) {
+/*uploadFile :function(req,res, cb) {
 	upload(req,res, function(err) {
         if(err) {
             console.log("Error uploading file.");
@@ -24,10 +24,24 @@ uploadFile :function(req,res, cb) {
         console.log(req.file.originalname)
         
     });
-}
-	
+  }*/
 
-	
+
+  addImage : function(data, callback){
+    console.log(data)
+    var img1 = new imageModel(data);
+    img1.save(function(err,resource){
+      if(err){
+        callback(err)
+      }
+      else
+      {
+        callback(null,resource)
+      }
+    })
+  }
+
+
 }
 
 

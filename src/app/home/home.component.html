@@ -22,8 +22,12 @@
 			</md-list>
 			
 		</form>
-
-		
+		<!-- <form enctype = "multipart/form-data"  method="post" (ngSubmit)="uploadImage()">
+			<input type="file" name="userPhoto" />
+			<input type="submit" value="Upload Image" name="submit">
+		</form> -->
+		<input type="file" #fileInput placeholder="Upload file..." />
+		<button type="button" (click)="uploadImage()">Upload</button>
 	</md-card-content>
 	
 </md-card>

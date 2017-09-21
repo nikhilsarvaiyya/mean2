@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {MdButtonModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
@@ -14,8 +14,9 @@ import { ServicesService } from '../services/services.service'
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-	
+	@ViewChild('fileInput') fileInput;
 	userObj = {}
+	imgObj={}
 	constructor(public http: Http, private service : ServicesService) { }
 
 	ngOnInit() {
@@ -37,8 +38,37 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-	uploadImage(){
-		console.log("Image Uploaded")
+	
+	uploadImage() {
+		let fileBrowser = this.fileInput.nativeElement;
+		if (fileBrowser.files && fileBrowser.files[0]) {
+			const formData = new FormData();
+			formData.append("image", fileBrowser.files[0].name);
+			let imgObj = {
+				"imageName" : fileBrowser.files[0].name,
+				"size" : fileBrowser.files[0].size,
+				"type" : fileBrowser.files[0].type,
+				"lastModified" : fileBrowser.files[0].lastModifiedDate,
+				"date" : new Date()
+			}
+			this.service.addImage(imgObj)
+			.subscribe(data => {
+				console.log("Image Reply", data);
+				
+			})
+		}
 	}
+
+
+/*uploadImage(){
+		console.log("Image Uploaded");
+
+		this.service.addImage()
+		.subscribe(data => {
+			console.log("Image Reply", data);
+			this.getAllUser();
+		})
+
+	}*/
 
 }
