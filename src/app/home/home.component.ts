@@ -22,21 +22,21 @@ export class HomeComponent implements OnInit {
 	constructor(public http: Http, private service : ServicesService) { }
 
 	ngOnInit() {
-		// Retrieve posts from the API
 		this.getAllUser();
+		this.getAllImages();
 	}
 
 	saveUser(personDetail){
 		this.service.addUser(personDetail)
 		.subscribe(data => {
-			console.log("success Data", data);
+			//console.log("success Data", data);
 			this.getAllUser();
 		})
 	}
 
 	getAllUser(){
 		this.service.getAllUser().subscribe(userList => {
-			console.log(userList)
+			//console.log(userList)
 		});
 	}
 
@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit {
 		if (fileBrowser.files && fileBrowser.files[0]) {
 			const formData = new FormData();
 			formData.append("image", fileBrowser.files[0].name);
-
 
 			let imgObj = {
 				"imageName" : fileBrowser.files[0].name,
@@ -58,8 +57,7 @@ export class HomeComponent implements OnInit {
 			}
 			this.service.addImage(imgObj)
 			.subscribe(data => {
-				console.log("Image Reply", data);
-				
+				//console.log("Image Reply", data);
 			})
 		}
 	}
@@ -73,13 +71,17 @@ export class HomeComponent implements OnInit {
 		var myReader:FileReader = new FileReader();
 
 		myReader.onloadend = (e) => {
-			console.log(e.target);
-			//this.imagebase64 = e.target;
-			//console.log(this.imagebase64);
 			this.imagebase64 = myReader.result;
-			console.log(this.imagebase64);
+			//console.log(e.target);
 		}
 		myReader.readAsDataURL(file);
+	}
+
+	getAllImages(){
+		this.service.getAllImages().subscribe(ImageList => {
+			//console.log(ImageList)
+			this.getAllImages();
+		});
 	}
 
 

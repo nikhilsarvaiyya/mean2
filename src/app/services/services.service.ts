@@ -10,23 +10,27 @@ export class ServicesService {
 	addUser(person){
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return this.http.post("/api/addUser", person ,{headers: headers})
+		return this.http.post("/api/users", person ,{headers: headers})
 		.map(response => response.json())
 		
 	}
 
 	getAllUser(){
-		return this.http.get('/api/getAllUser')
+		return this.http.get('/api/users')
 		.map(res => res.json());
 	}
 
 	addImage(imgObj){
 		var headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return this.http.post('/api/uploadImage', imgObj, {headers: headers})
+		return this.http.post('/api/images', imgObj, {headers: headers})
 		.map(response => response.json())
 	}
 
+	getAllImages(){
+		return this.http.get('/api/images')
+		.map(res => res.json());
+	}
 
 
 }

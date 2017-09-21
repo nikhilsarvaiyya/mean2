@@ -26,7 +26,7 @@ module.exports= {
 			}
 			else
 			{
-				callback(null,data)
+				callback(null,resource)
 			}
 		})
 	}

@@ -28,7 +28,7 @@ module.exports= {
 
 
   addImage : function(data, callback){
-    console.log(data)
+    
     var img1 = new imageModel(data);
     img1.save(function(err,resource){
       if(err){
@@ -39,6 +39,19 @@ module.exports= {
         callback(null,resource)
       }
     })
+  },
+
+  getImages : function(callback){
+    imageModel.find({}, function(err, data){
+      if(err){
+        callback(err)
+      }
+      else
+      {
+        callback(null,data);
+      }
+
+    })  
   }
 
 

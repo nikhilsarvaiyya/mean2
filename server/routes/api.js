@@ -21,33 +21,41 @@ router.get('/', (req, res) => {
 });
 
 /*Get Laa user List*/
-router.get('/getAllUser', (req, res) => {
+router.get('/users', (req, res) => {
   userCtrl.getUsers(function(err, data){
+    res.send(data);
     //console.log(data);
+  })
+
+});
+
+/*Get Laa user List*/
+router.get('/images', (req, res) => {
+  imgCtrl.getImages(function(err, data){
+   res.send(data);
+    //console.log("All Images",data);
   })
 
 });
 
 // Add User
-router.post('/addUser', (req, res) => {
+router.post('/users', (req, res) => {
   userCtrl.postUsers(req.body,function(err, data){
     //console.log(data);
   })
 });
 
-router.post('/photo',function(req,res){
+/*router.post('/photo',function(req,res){
     imgCtrl.uploadFile(req, res, function(err, data){
     //console.log(data);
   })
-});
+});*/
 
-router.post('/uploadImage',function(req,res){
-  console.log("inside upload image");
-  console.log(req.body);
-    imgCtrl.addImage(req.body, function(err, data){
-    console.log(data);
+router.post('/images',function(req,res){
+  imgCtrl.addImage(req.body, function(err, data){
+    //console.log(data);
 
-    })
+  })
 });
 
 

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 // Imports Material Components
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {MaterialModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
